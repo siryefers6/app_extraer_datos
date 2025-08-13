@@ -52,12 +52,17 @@
             class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
             F.PAGO<br>(FF&lt;fpago&gt;)
         </button>
+        
     </div>
 
     <div class="flex justify-center">
         <button hx-post="/extraer_all_resultados" hx-target="#resultados"
             class="font-bold text-sm border border-gray-304 text-gray-700 py-1.5 px-4 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
             EXTRAER TODO
+        </button>
+        <button hx-post="/guardar_resultado" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            GUARDAR RESULTADO
         </button>
     </div>
 

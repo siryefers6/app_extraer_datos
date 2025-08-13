@@ -17,7 +17,7 @@ class DatosTexto:
         self.montos = self.get_montos()
         self.glosas = self.get_glosas()
         self.fpago = self.get_fpago()
-        self.resultados = []
+        self.cantidad_resultados = self.get_cantidad_resultados()
 
     def get_rut(self) -> list:
         texto = self.texto_formateado_sin_glosas
@@ -72,5 +72,22 @@ class DatosTexto:
         patron = r'FF\s*(\d{1,2})\b'
         return re.findall(patron, texto)
 
+    def get_cantidad_resultados(self) -> int:
+        total = 0
+        listas = [
+            self.rut,
+            self.pedidos,
+            self.guias,
+            self.facturas,
+            self.ordenes,
+            self.ccosto,
+            self.vendedores,
+            self.montos,
+            self.glosas,
+            self.fpago
+        ]
 
+        for lista in listas:
+            total += len(lista)
 
+        return total

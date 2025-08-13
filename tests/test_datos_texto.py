@@ -300,3 +300,33 @@ def test_obtener_formas_pago_cadena_vacia():
     assert isinstance(resultado, list)
     assert resultado == []
 
+def test_obtener_cantidad_resultados():
+    """
+    Prueba la correcta obtención de la cantidad de resultados de un texto.
+    """
+    # Arrange
+    texto = ' ff90 ff30 ff7 1 vv9 oo123 *glosa*'
+    datos_texto = DatosTexto(texto)
+
+    # Act
+    resultado = datos_texto.cantidad_resultados
+
+    # Assert
+    assert isinstance(resultado, int)
+    assert resultado == 6
+
+def test_obtener_cantidad_resultados_cadena_vacia():
+    """
+    Prueba que retorne 0 con un texto vacío.
+    """
+    # Arrange
+    texto = ''
+    datos_texto = DatosTexto(texto)
+
+    # Act
+    resultado = datos_texto.cantidad_resultados
+
+    # Assert
+    assert isinstance(resultado, int)
+    assert resultado == 0
+

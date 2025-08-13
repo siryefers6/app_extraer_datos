@@ -1,10 +1,23 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from app.models.datos_texto import DatosTexto
+from sqlmodel import Session
+from app.models.models import TextoProcesado
+from app.database import get_session, init_db
+from sqlalchemy.exc import IntegrityError
+from contextlib import asynccontextmanager  # ✅ nuevo import
 
-app = FastAPI()
+# 🔄 Reemplazo del startup con lifespan
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+    # Aquí podrías cerrar conexiones si lo necesitas
+
+# ⬇️ Pasa el lifespan al instanciar la app
+app = FastAPI(lifespan=lifespan)
 
 # Montar la carpeta /dist como carpeta estática
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -15,6 +28,45 @@ templates = Jinja2Templates(directory="app/templates")
 @app.get("/", response_class=HTMLResponse)
 def pagina_principal(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+@app.post("/guardar_resultado", response_class=HTMLResponse)
+def guardar_resultado(request: Request, texto: str = Form(...), session: Session = Depends(get_session)):
+    dt = DatosTexto(texto)
+
+    if dt.cantidad_resultados == 0:
+        mensaje = 'No hay información extraída, no se guardó nada.'
+        return templates.TemplateResponse(
+            "confirmacion.html",
+            {"request": request, "mensaje": mensaje}
+        )
+
+    nuevo = TextoProcesado(
+        texto_original=texto,
+        rut=",".join(dt.rut),
+        pedidos=",".join(dt.pedidos),
+        guias=",".join(dt.guias),
+        facturas=",".join(dt.facturas),
+        ordenes=",".join(dt.ordenes),
+        ccosto=",".join(dt.ccosto),
+        vendedores=",".join(dt.vendedores),
+        montos=",".join(dt.montos),
+        glosas=",".join(dt.glosas),
+        fpago=",".join(dt.fpago),
+    )
+
+    try:
+        session.add(nuevo)
+        session.commit()
+        session.refresh(nuevo)
+        mensaje = "✅ Resultado guardado correctamente"
+    except IntegrityError:
+        session.rollback()
+        mensaje = "⚠️ Este texto ya ha sido guardado anteriormente"
+
+    return templates.TemplateResponse(
+        "confirmacion.html",
+        {"request": request, "mensaje": mensaje}
+    )
 
 
 @app.post("/extraer_rut")
