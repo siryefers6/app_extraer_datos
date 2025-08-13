@@ -1,0 +1,153 @@
+{% if len_texto > 0 %}
+    {% if datos_texto.rut %}
+    <div>
+        <h3 class="font-bold text-center">RUT</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.rut | length }}</h3>
+        {% for e in datos_texto.rut %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">RUT</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.rut | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.pedidos %}
+    <div>
+        <h3 class="font-bold text-center">PEDIDO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.pedidos | length }}</h3>
+        {% for e in datos_texto.pedidos %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">PEDIDO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.pedidos | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.guias %}
+    <div>
+        <h3 class="font-bold text-center">GUIA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.guias | length }}</h3>
+        {% for e in datos_texto.guias %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">GUIA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.guias | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.facturas %}
+    <div>
+        <h3 class="font-bold text-center">FACTURA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.facturas | length }}</h3>
+        {% for e in datos_texto.facturas %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">FACTURA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.facturas | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.ordenes %}
+    <div>
+        <h3 class="font-bold text-center">ORDEN</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.ordenes | length }}</h3>
+        {% for e in datos_texto.ordenes %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">ORDEN</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.ordenes | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.ccosto %}
+    <div>
+        <h3 class="font-bold text-center">C.COSTO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.ccosto | length }}</h3>
+        {% for e in datos_texto.ccosto %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">C.COSTO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.ccosto | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.vendedores %}
+    <div>
+        <h3 class="font-bold text-center">VENDEDOR</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.vendedores | length }}</h3>
+        {% for e in datos_texto.vendedores %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">VENDEDOR</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.vendedores | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.montos %}
+    <div>
+        <h3 class="font-bold text-center">MONTO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.montos | length }}</h3>
+        {% for e in datos_texto.montos %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">MONTO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.montos | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.glosas %}
+    <div>
+        <h3 class="font-bold text-center">GLOSA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.glosas | length }}</h3>
+        {% for e in datos_texto.glosas %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">GLOSA</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.glosas | length }}</h3>
+    </div>
+    {% endif %}
+
+    {% if datos_texto.fpago %}
+    <div>
+        <h3 class="font-bold text-center">F.PAGO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.fpago | length }}</h3>
+        {% for e in datos_texto.fpago %}
+        <p class="text-center text-sm border-b">{{ e }}</p>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h3 class="font-bold text-center">F.PAGO</h3>
+        <h1 class="font-bold text-center mb-4">Cant: {{ datos_texto.fpago | length }}</h3>
+    </div>
+    {% endif %}
+
+
+{% endif %}

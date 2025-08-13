@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Extraer</title>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"></script>
+    <link href="{{ url_for('static', path='output.css') }}" rel="stylesheet">
+</head>
+<body class="p-8 bg-gray-100">
+    <div class="">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

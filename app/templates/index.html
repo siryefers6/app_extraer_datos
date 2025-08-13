@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4 text-center">EXTRAER INFORMACIÓN</h1>
+<form class="flex flex-col items-center justify-center gap-4 mb-5">
+    <textarea name="texto"
+        class="mb-5 w-200 h-60 p-3 border border-gray-300 rounded-md text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono"
+        placeholder="Pega un texto aquí..." required>
+</textarea>
+    <h2 class="text-center font-semibold text-gray-800 mb-2">
+        Oprima un botón para extraer la información
+    </h2>
+
+    <div class="grid grid-cols-3 lg:grid-cols-5 gap-3">
+        <button hx-post="/extraer_rut" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            RUT<br>(&lt;rut&gt;-)
+        </button>
+        <button hx-post="/extraer_pedidos" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            PEDIDOS
+        </button>
+        <button hx-post="/extraer_guias" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            GUIAS
+        </button>
+        <button hx-post="/extraer_facturas" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            FACTURAS
+        </button>
+        <button hx-post="/extraer_ordenes" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            ORDENES<br>(OO&lt;orden&gt;)
+        </button>
+        <button hx-post="/extraer_ccosto" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            C.COSTO<br>(CC&lt;ccosto&gt;)
+        </button>
+        <button hx-post="/extraer_vendedores" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            VENDEDORES<br>(VV&lt;cod. vend&gt;)
+        </button>
+        <button hx-post="/extraer_montos" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            MONTOS<br>($&lt;monto&gt;)
+        </button>
+        <button hx-post="/extraer_glosas" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            GLOSAS<br>(*&lt;glosa&gt;*)
+        </button>
+        <button hx-post="/extraer_fpago" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-400 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            F.PAGO<br>(FF&lt;fpago&gt;)
+        </button>
+    </div>
+
+    <div class="flex justify-center">
+        <button hx-post="/extraer_all_resultados" hx-target="#resultados"
+            class="font-bold text-sm border border-gray-304 text-gray-700 py-1.5 px-4 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            EXTRAER TODO
+        </button>
+    </div>
+
+
+</form>
+
+<h2 class="font-bold text-center mb-6">RESULTADOS</h2>
+<div id="resultados" class="flex flex-row justify-center gap-5">
+</div>
+{% endblock %}
